@@ -1,0 +1,3 @@
+10:08:14.921 [main] com.networknt.petstore-2.0.0  ERROR c.n.config.Config$FileConfigImpl:308 getConfigStream - *****Unable to load config handler.yml
+10:08:14.924 [main] com.networknt.petstore-2.0.0  ERROR c.n.config.Config$FileConfigImpl:308 getConfigStream - *****Unable to load config handler.yaml
+10:08:14.924 [main] com.networknt.petstore-2.0.0  ERROR c.n.config.Config$FileConfigImpl:308 getConfigStream - *****Unable to load config handler.json
