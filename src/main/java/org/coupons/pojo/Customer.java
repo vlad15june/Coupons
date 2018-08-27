@@ -9,12 +9,12 @@ public class Customer extends User {
 	private ArrayList<Coupon> coupons;
 
 	public Customer() {
+		setRole(Role.CUSTOMER);
 	}
 
-	public Customer(String id, String firstName, String lastName, String email, String password) {
+	public Customer(String firstName, String lastName, String email, String password) {
 		setEmail(email);
 		setFirstName(firstName);
-		setId(id);
 		setLastName(lastName);
 		setPassword(password);
 		setRole(Role.CUSTOMER);
@@ -84,7 +84,7 @@ public class Customer extends User {
 	@Override
 	public String toString() {
 		return "Customer [firstName=" + firstName + ", lastName=" + lastName + ", coupons=" + coupons + ", getId()="
-				+ getId() + ", getEmail()=" + getEmail() + ", getPassword()=" + getPassword() + ", getRole()="
+				+ getUserId() + ", getEmail()=" + getEmail() + ", getPassword()=" + getPassword() + ", getRole()="
 				+ getRole() + "]";
 	}
 }

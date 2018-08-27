@@ -17,4 +17,9 @@ public class Hasher {
 		return hashValue;
 	}
 	
+//	public static void main(String[] args) {
+//		String pass = "Nick190494";
+//		System.out.println(hashEncode(pass.getBytes(), Algorithms.SHA256));
+//	}
+	
 }

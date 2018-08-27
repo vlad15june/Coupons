@@ -2,6 +2,9 @@ package org.coupons;
 
 import org.coupons.handlers.admin.*;
 import org.coupons.handlers.company.*;
+import org.coupons.handlers.coupons.GetAllCouponsCategoryHandlerGet;
+import org.coupons.handlers.coupons.GetAllCouponsHandlerGet;
+import org.coupons.handlers.coupons.GetAllCouponsPriceHandlerGet;
 import org.coupons.handlers.customer.*;
 import org.coupons.handlers.login.*;
 
@@ -22,7 +25,6 @@ public class PathHandlerProvider implements HandlerProvider {
 		return Handlers.routing()
 				// LOGIN
 				.add(Methods.POST, "/coupons/login", new LoginHandlerPost())
-				.add(Methods.GET, "/coupons/login", new CheckLoginHandlerGet())
 
 				// ADMIN OPS ON COMPANY
 				.add(Methods.POST, ADMIN_USER_ROUTE + "/companies", new AdminCreateCompanyHandlerPost())
@@ -57,6 +59,13 @@ public class PathHandlerProvider implements HandlerProvider {
 						new CustomerGetCouponsCategoryHnadlerGet())
 				.add(Methods.GET, CUSTOMER_USER_ROUTE + "/coupons/price/{price}",
 						new CustomerGetCouponsPriceHandlerGet())
-				.add(Methods.GET, CUSTOMER_USER_ROUTE, new CustomerSelfDetailsHandlerGet());
+				.add(Methods.GET, CUSTOMER_USER_ROUTE, new CustomerSelfDetailsHandlerGet())
+				
+				//COUPONS
+				.add(Methods.GET, "/coupons", new GetAllCouponsHandlerGet())
+				.add(Methods.GET, "/coupons/price/{price}", new GetAllCouponsPriceHandlerGet())
+				.add(Methods.GET, "/coupons/category/{category}", new GetAllCouponsCategoryHandlerGet());
+		
+			
 	}
 }

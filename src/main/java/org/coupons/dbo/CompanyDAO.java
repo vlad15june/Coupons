@@ -1,8 +1,8 @@
 package org.coupons.dbo;
 
-import java.util.*;
+import java.util.List;
 
-import org.coupons.pojo.*;
+import org.coupons.pojo.Company;
 
 public final class CompanyDAO {
 
@@ -19,11 +19,36 @@ public final class CompanyDAO {
 	}
 
 	public static List<Company> getAllCompanies() {
-		return new ArrayList<>();
+		return null;
 	}
 
-	public static Company getOneCompany(int companyId) {
-		return new Company();
+	public static Company getOneCompany(String userId) {
+		return null;
 	}
-
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

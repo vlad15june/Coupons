@@ -4,8 +4,8 @@ import java.sql.Date;
 
 public class Coupon {
 
-	private int id;
-	private int companyId;
+	private String couponId;
+	private String companyId;
 	private Category category;
 	private String title;
 	private String description;
@@ -15,36 +15,35 @@ public class Coupon {
 	private double price;
 	private String imageUrl;
 
-	public Coupon() {
-	}
+	public Coupon() {}
 
-	public Coupon(int id, int companyId, Category category, String title, String description, Date startDate,
+	public Coupon(String couponId, String companyId, Category category, String title, String description, Date startDate,
 			Date expiryDate, int amount, double price, String imageUrl) {
 		setAmount(amount);
 		setCategory(category);
 		setCompanyId(companyId);
 		setDescription(description);
 		setExpiryDate(expiryDate);
-		setId(companyId);
+		setCouponId(couponId);
 		setImageUrl(imageUrl);
 		setPrice(price);
 		setStartDate(startDate);
 		setTitle(title);
 	}
 
-	public int getId() {
-		return id;
+	public String getCouponId() {
+		return couponId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setCouponId(String couponId) {
+		this.couponId = couponId;
 	}
 
-	public int getCompanyId() {
+	public String getCompanyId() {
 		return companyId;
 	}
 
-	public void setCompanyId(int companyId) {
+	public void setCompanyId(String companyId) {
 		this.companyId = companyId;
 	}
 
@@ -118,10 +117,10 @@ public class Coupon {
 		int result = 1;
 		result = prime * result + amount;
 		result = prime * result + ((category == null) ? 0 : category.hashCode());
-		result = prime * result + companyId;
+		result = prime * result + ((companyId == null) ? 0 : companyId.hashCode());
+		result = prime * result + ((couponId == null) ? 0 : couponId.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((expiryDate == null) ? 0 : expiryDate.hashCode());
-		result = prime * result + id;
 		result = prime * result + ((imageUrl == null) ? 0 : imageUrl.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(price);
@@ -144,7 +143,15 @@ public class Coupon {
 			return false;
 		if (category != other.category)
 			return false;
-		if (companyId != other.companyId)
+		if (companyId == null) {
+			if (other.companyId != null)
+				return false;
+		} else if (!companyId.equals(other.companyId))
+			return false;
+		if (couponId == null) {
+			if (other.couponId != null)
+				return false;
+		} else if (!couponId.equals(other.couponId))
 			return false;
 		if (description == null) {
 			if (other.description != null)
@@ -155,8 +162,6 @@ public class Coupon {
 			if (other.expiryDate != null)
 				return false;
 		} else if (!expiryDate.equals(other.expiryDate))
-			return false;
-		if (id != other.id)
 			return false;
 		if (imageUrl == null) {
 			if (other.imageUrl != null)
@@ -180,8 +185,8 @@ public class Coupon {
 
 	@Override
 	public String toString() {
-		return "Coupon [id=" + id + ", companyId=" + companyId + ", category=" + category + ", title=" + title
-				+ ", description=" + description + ", startDate=" + startDate + ", expiryDate=" + expiryDate
+		return "Coupon [couponId=" + couponId + ", companyId=" + companyId + ", category=" + category + ", title="
+				+ title + ", description=" + description + ", startDate=" + startDate + ", expiryDate=" + expiryDate
 				+ ", amount=" + amount + ", price=" + price + ", imageUrl=" + imageUrl + "]";
 	}
 

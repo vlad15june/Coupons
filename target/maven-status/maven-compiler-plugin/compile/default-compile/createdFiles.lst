@@ -1,4 +1,5 @@
 org/coupons/dbo/CustomerDAO.class
+org/coupons/util/Constants.class
 org/coupons/pojo/Company.class
 org/coupons/facade/AdminFacade.class
 org/coupons/util/Hasher.class

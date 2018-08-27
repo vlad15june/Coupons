@@ -3,11 +3,12 @@ package org.coupons.pojo;
 import java.util.*;
 
 public class Company extends User {
-
+	
 	private String name;
 	private ArrayList<Coupon> coupons;
 
 	public Company() {
+		setRole(Role.COMPANY);
 	}
 
 	public Company(String name, String email, String password) {
@@ -66,7 +67,7 @@ public class Company extends User {
 
 	@Override
 	public String toString() {
-		return "Company [name=" + name + ", coupons=" + coupons + ", getId()=" + getId() + ", getEmail()=" + getEmail()
+		return "Company [name=" + name + ", coupons=" + coupons + ", getId()=" + getUserId() + ", getEmail()=" + getEmail()
 				+ ", getPassword()=" + getPassword() + ", getRole()=" + getRole() + "]";
 	}
 
