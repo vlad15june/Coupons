@@ -8,7 +8,7 @@ import org.coupons.pojo.*;
 public final class LoginManager {
 
 	public static boolean login(User user) throws SQLException {
-		User tempUser = UserDAO.getUser(user.getEmail(), user.getPassword());
+		User tempUser = UserDAO.getUser(user);
 		if (tempUser != null) {
 			// TODO:
 			// add id and Role as Claim to JWT payload

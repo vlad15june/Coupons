@@ -25,7 +25,7 @@ singletons:
   # Swagger Parsing swagger specification based on request uri and method.
   # - com.networknt.swagger.SwaggerHandler
   # Security JWT token verification and scope verification (depending on SwaggerHandler)
-#  - com.networknt.security.JwtVerifyHandler
+  - org.coupons.security.CustomJwtVerifyHandler
   # Body Parse body based on content type in the header.
   - com.networknt.body.BodyHandler
   # SimpleAudit Log important info about the request into audit log

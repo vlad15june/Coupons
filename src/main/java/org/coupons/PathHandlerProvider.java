@@ -1,18 +1,37 @@
 package org.coupons;
 
-import org.coupons.handlers.admin.*;
-import org.coupons.handlers.company.*;
-import org.coupons.handlers.coupons.GetAllCouponsCategoryHandlerGet;
-import org.coupons.handlers.coupons.GetAllCouponsHandlerGet;
-import org.coupons.handlers.coupons.GetAllCouponsPriceHandlerGet;
-import org.coupons.handlers.customer.*;
-import org.coupons.handlers.login.*;
+import org.coupons.handlers.admin.AdminCreateCompanyHandlerPost;
+import org.coupons.handlers.admin.AdminCreateCustomerHandlerPost;
+import org.coupons.handlers.admin.AdminGetCompaniesHandlerGet;
+import org.coupons.handlers.admin.AdminGetCompanyHandlerGet;
+import org.coupons.handlers.admin.AdminGetCustomerHandlerGet;
+import org.coupons.handlers.admin.AdminGetCustomersHandlerGet;
+import org.coupons.handlers.admin.AdminRemoveCompanyHandlerDelete;
+import org.coupons.handlers.admin.AdminRemoveCustomerHandlerDelete;
+import org.coupons.handlers.admin.AdminUpdateCompanyHandlerPut;
+import org.coupons.handlers.admin.AdminUpdateCustomerHandlerPut;
+import org.coupons.handlers.company.CompanyCreateCouponHandlerPost;
+import org.coupons.handlers.company.CompanyGetCouponHandlerGet;
+import org.coupons.handlers.company.CompanyGetCouponsCategoryHandlerGet;
+import org.coupons.handlers.company.CompanyGetCouponsHandlerGet;
+import org.coupons.handlers.company.CompanyGetCouponsPriceHandlerGet;
+import org.coupons.handlers.company.CompanyRemoveCouponHandlerDelete;
+import org.coupons.handlers.company.CompanySelfDetailsHandlerGet;
+import org.coupons.handlers.company.CompanyUpdateCouponHandlerPut;
+import org.coupons.handlers.customer.CustomerGetCouponsCategoryHnadlerGet;
+import org.coupons.handlers.customer.CustomerGetCouponsHandlerGet;
+import org.coupons.handlers.customer.CustomerGetCouponsPriceHandlerGet;
+import org.coupons.handlers.customer.CustomerPurchaseCouponHandlerPost;
+import org.coupons.handlers.customer.CustomerSelfDetailsHandlerGet;
+import org.coupons.handlers.login.CheckLoginHandlerGet;
+import org.coupons.handlers.login.LoginHandlerPost;
+import org.coupons.util.Const;
 
-import com.networknt.handler.*;
+import com.networknt.handler.HandlerProvider;
 
-import io.undertow.*;
-import io.undertow.server.*;
-import io.undertow.util.*;
+import io.undertow.Handlers;
+import io.undertow.server.HttpHandler;
+import io.undertow.util.Methods;
 
 public class PathHandlerProvider implements HandlerProvider {
 
@@ -24,7 +43,8 @@ public class PathHandlerProvider implements HandlerProvider {
 	public HttpHandler getHandler() {
 		return Handlers.routing()
 				// LOGIN
-				.add(Methods.POST, "/coupons/login", new LoginHandlerPost())
+				.add(Methods.POST, Const.LOGIN_END_POINT, new LoginHandlerPost())
+				.add(Methods.GET, Const.LOGIN_END_POINT, new CheckLoginHandlerGet())
 
 				// ADMIN OPS ON COMPANY
 				.add(Methods.POST, ADMIN_USER_ROUTE + "/companies", new AdminCreateCompanyHandlerPost())
@@ -59,13 +79,6 @@ public class PathHandlerProvider implements HandlerProvider {
 						new CustomerGetCouponsCategoryHnadlerGet())
 				.add(Methods.GET, CUSTOMER_USER_ROUTE + "/coupons/price/{price}",
 						new CustomerGetCouponsPriceHandlerGet())
-				.add(Methods.GET, CUSTOMER_USER_ROUTE, new CustomerSelfDetailsHandlerGet())
-				
-				//COUPONS
-				.add(Methods.GET, "/coupons", new GetAllCouponsHandlerGet())
-				.add(Methods.GET, "/coupons/price/{price}", new GetAllCouponsPriceHandlerGet())
-				.add(Methods.GET, "/coupons/category/{category}", new GetAllCouponsCategoryHandlerGet());
-		
-			
+				.add(Methods.GET, CUSTOMER_USER_ROUTE, new CustomerSelfDetailsHandlerGet());
 	}
 }

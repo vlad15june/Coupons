@@ -2,12 +2,18 @@ package org.coupons.pojo;
 
 public class User {
 
-	private String userId;
+	private String id;
 	private String email;
 	private String password;
 	private Role role;
 
-	public User() {}
+	public User() {
+	}
+
+	public User(String id, String email, String password, Role role) {
+		this(email, password, role);
+		setId(id);
+	}
 
 	public User(String email, String password, Role role) {
 		setEmail(email);
@@ -15,12 +21,12 @@ public class User {
 		setRole(role);
 	}
 
-	public String getUserId() {
-		return userId;
+	public String getId() {
+		return id;
 	}
 
-	public void setUserId(String id) {
-		this.userId = id;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getEmail() {
@@ -52,8 +58,9 @@ public class User {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
-		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result
+				+ ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((role == null) ? 0 : role.hashCode());
 		return result;
 	}
@@ -72,7 +79,7 @@ public class User {
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
-		if (!userId.equals(other.userId))
+		if (!id.equals(other.id))
 			return false;
 		if (password == null) {
 			if (other.password != null)
@@ -86,7 +93,8 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + userId + ", email=" + email + ", password=" + password + ", role=" + role + "]";
+		return "User [id=" + id + ", email=" + email + ", password=" + password
+				+ ", role=" + role + "]";
 	}
 
 }

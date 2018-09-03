@@ -8,7 +8,7 @@ public class JSONConvertor {
 	@SuppressWarnings("unchecked")
 	public static JSONObject userToJSON(User user) {
 		JSONObject json = new JSONObject();
-		json.put("id", user.getUserId());
+		json.put("id", user.getId());
 		json.put("email", user.getEmail());
 		json.put("password", user.getPassword());
 		json.put("role", user.getRole());
